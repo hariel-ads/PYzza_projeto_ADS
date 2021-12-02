@@ -39,5 +39,5 @@ python manage.py runserver
 ```
 <div align: "center">
 <h3>Grupo:</h3>
-● Hariel Cardoso Lopes ● Lethícia Antunes Soares ● Luis Felipe Ortega Ventura ● Stalin Fernando Santos Oliveira Miranda ● Thiago dos Santos Soares ● Wellington Jorge Vieira
+● Hariel Cardoso Lopes <br>● Lethícia Antunes Soares ● Luis Felipe Ortega Ventura <br>● Stalin Fernando Santos Oliveira Miranda <br>● Thiago dos Santos Soares <br>● Wellington Jorge Vieira
 </div>
