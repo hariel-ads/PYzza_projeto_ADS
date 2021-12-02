@@ -1,4 +1,4 @@
-# PYzza_projeto_ADS
+# PYzza_projeto_ADS 🍕💻📚
 <h3>Sistemas de Informação para pizzarias</h3>
 
 Projeto desenvolvido para a conclusão do curso de ADS - Faculdade Impacta
