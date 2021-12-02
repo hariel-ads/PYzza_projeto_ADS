@@ -24,3 +24,16 @@ Ao final do semestre foi possível entregar um sistema que cumpre as seguintes f
 * Consulta e alteração de dados de Fornecedores
 * Consulta da quantidade de produtos em estoque
 <!--te-->
+
+<h3> Instruções para instalação: </h3>
+Instale as biliotecas listadas no requirements.txt
+
+Em seguida será necessário criar as tabelas no banco de dados através dos comandos:
+'''
+python manage.py makemigrations
+python manage.py migrate
+'''
+Feito isso já é possível inicializar o sistema com o comando
+'''
+python manage.py runserver
+'''
