@@ -34,6 +34,6 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 Feito isso já é possível inicializar o sistema com o comando
-'''shell
+```
 python manage.py runserver
-'''
+```
