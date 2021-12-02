@@ -1,8 +1,9 @@
 # PYzza_projeto_ADS 🍕💻📚
-<h3>Sistemas de Informação para pizzarias</h3>
 <div align= "left">
 <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" />  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" /> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" /> <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white" /> <img src="ttps://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white" /> 
 </div>
+<h3>Sistemas de Informação para pizzarias</h3>
+
 Projeto desenvolvido para a conclusão do curso de ADS - Faculdade Impacta
 
 O projeto teve seu início com o levantamento e análise dos problemas mais comuns encontrados por restaurantes que nos levou a formular uma lista de necessidades desencadeando numa descrição dos processos de negócio, análise de eventos e modelo conceitual para então elencar os requisitos de sistema de maneira mais assertiva. 
