@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% load widget_tweaks %}
+
+
+{% block title %} Purchases List {% endblock title %}
+
+
+{% block content %}
+    
+    <div class="row" style="color: #004f2d; font-style: bold; font-size: 3rem;">
+        <div class="col-md-8">Lista de Entradas</div>
+        <div class="col-md-4">               
+            <div style="float:right;"> <a class="btn ghost-green" href="{% url 'selecionar-fornecedor' %}">Nova Entrada de Produto</a> </div>
+        </div>
+    </div>
+
+    <br>
+
+    <table class="table table-css">
+
+        <thead class="thead-inverse align-middle">
+            <tr>
+                <th width="10%">Registro de entrada</th>
+                <th width="15%">Fornecedor</th>
+                <th width="15%">Produtos</th>
+                <th width="10%">Quantidade</th>
+                <th width="15%">Preço total</th>
+                <th width="10%">Data da entrada</th>
+                <th width="25%">Opções</th>
+            </tr>
+        </thead>
+
+{% if registros %}
+
+        <tbody>         
+            {% for entrada in registros %}
+            <tr>
+                <td class="align-middle"> <h3 style="color: #004f2d;">{{ entrada.registro }}</h3> </td>
+                <td class=""> 
+                    {% if entrada.fornecedor.is_deleted %}
+                        {{ entrada.fornecedor }}<br> 
+                    {% else %}
+                        <a href="{% url 'fornecedor' entrada.fornecedor.nome %}">{{ entrada.fornecedor }}</a> <br> 
+                    {% endif %}
+                    <small style="color: #909494">Contato: {{ entrada.fornecedor.telefone }} {{ entrada.fornecedor.email }}</small> 
+                </td>
+                <td class="align-middle">{% for item in entrada.get_items_list %} {{ item.produto.nome }} <br> {% endfor %}</td>
+                <td class="align-middle">{% for item in entrada.get_items_list %} {{ item.quantidade }} <br> {% endfor %}</td>     
+                <td class="align-middle">{{ entrada.get_total_price }}</td>
+                <td class="align-middle">{{ entrada.diahora.date }}</td>
+                <td class="align-middle"> <a href="{% url 'registro-entrada' entrada.registro %}" class="btn ghost-pink" style="display: none;">View Bill</a> <a href="{% url 'deletar-entrada' entrada.pk %}" class="btn ghost-red">Deletar</a> </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+    <div class="align-middle">
+        {% if is_paginated %}
+
+            {% if page_obj.has_previous %}
+                <a class="btn btn-outline-info mb-4" href="?page=1">Primeira</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Próximo</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Final</a>
+            {% endif %}
+
+        {% endif %}
+    </div>
+
+{% else %}
+
+        <tbody></tbody>   
+    </table>
+
+    <br><br><br><br><br><br><br><br>
+    <div style="color: #004f2d; font-style: bold; font-size: 1.5rem; text-align: center;">Lista vazia</div>
+
+{% endif %}
+
+{% endblock content %}

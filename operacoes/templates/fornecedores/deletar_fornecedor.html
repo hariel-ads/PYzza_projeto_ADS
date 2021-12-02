@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+{% block title %} Deletar Fornecedor {% endblock title %}
+
+
+{% block content %}
+                
+    <form method="post">
+        
+        {% csrf_token %}
+        
+        <fieldset class="form-group">
+            <div style="color:#00824a; font-style: bold; font-size: 3rem; border-bottom: 1px solid white;">Deletar Fornecedor</div> <br>
+            <h2 style="color: #00824a;">Você tem certeza que deseja deletar o fornecedor "{{ object.nome }}"?</h2>
+        </fieldset>
+
+        <div class="form-group">  
+            <button type="submit" class="btn ghost-red">Sim, deletar</button>
+            <a href="{% url 'lista-fornecedores' %}" class="btn ghost-button">Cancelar</a>
+        </div>
+        
+    </form>
+
+{% endblock content %}

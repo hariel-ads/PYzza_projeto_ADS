@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block title %} Home {% endblock title %}
+
+
+{% block content %}
+
+    <div style="color:#004f2d; font-style: bold; font-size: 3rem; border-bottom: 1px solid #fcefef">Bem Vindo, {{ request.user.username }}</div>
+
+    <br>
+
+    <br>
+
+    <div class="row">
+        <div class="col-md-6">
+            <a href="{% url 'selecionar-fornecedor' %}" class="btn ghost-green btn-lg btn-block btn-huge">Registrar entrada de Produto</a>
+        </div>
+        <div class="col-md-6">
+            <a href="{% url 'nova-saida' %}" class="btn ghost-green btn-lg btn-block btn-huge">Registrar saída de produto</a>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="content-section" style="border-color: #004f2d; border-radius: 15px;">
+        <div class="row">           
+
+            <div class="col-md-6">
+                <div style="color:#004f2d; font-style: bold; font-size: 1.3em; border-bottom: 2px solid #004f2d">Entradas mais recentes</div><br>
+                {% for item in entradas %}
+                    {% if not forloop.first %}
+                        <br><div style="border-bottom: 0.5px solid #fff"></div><br>
+                    {% endif %}
+                    <div class="row">               
+                        <div class="col-md-9"> 
+                            Registro de entrada: {{ item.registro }} <br> 
+                            Fornecedor: {{ item.fornecedor.nome }} <br>
+                            <small>{{ item.diahora.date }}</small>
+                        </div>                        
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-6">
+                <div style="color:#004f2d; font-style: bold; font-size: 1.3em; border-bottom: 2px solid #004f2d">Saídas mais recentes</div><br>
+                {% for item in saidas %}
+                    {% if not forloop.first %}
+                        <br><div style="border-bottom: 0.5px solid #fff"></div><br>
+                    {% endif %}
+                    <div class="row">               
+                        <div class="col-md-9"> 
+                            Registro de saída: {{ item.registro }} <br>         
+                            <small>{{ item.diahora.date }}</small>
+                        </div>                        
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+{% block title %} About {% endblock title %}
+
+
+{% block content %}
+    
+    {% if not user.is_authenticated  %}
+        <br>
+        <a href="{% url 'home' %}" class="btn ghost-button">Voltar</a>
+    {% endif %}    
+    
+    <div class="align-middle" style="color: #004f2d; font-style: bold; font-size: 3rem;">PYzza!</div>
+    <div class="align-middle" style="color: #004f2d">Gerenciamento de Estoque para pizzarias</div>
+    <br><br>
+
+    <div class="align-middle"> 
+        <h2 style="color:#004f2d">| Sobre |</h3> <br>
+            <p>
+                Descrição breve do projeto e suas funcionalidades.
+            </p>
+        <br>
+    </div>
+        <h2 style="color:#004f2d" class="align-middle">| Funcionalidades |</h3> <br>
+            <ul style="display:table; margin:0 auto;">                
+                <li></li>
+                
+            </ul>  
+        <br>
+    <div class="align-middle">
+        <h2 style="color:#004f2d" >| Desenvolvedores |</h3> <br>            
+            <br><br><br>
+    </div>
+
+{% endblock content %}

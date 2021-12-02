@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+  {{ fornecedor.nome }}'s profile
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="content-section">
+        <div class="media">
+            <div class="media-body">
+                <h2 style="color:#00824a;" class="account-heading">&nbsp;{{ fornecedor.nome }}</h2>
+                <a href="{% url 'editar-fornecedor' fornecedor.pk %}" class="btn ghost-button" style="float: right;">Editar</a>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="fal">
+                            Telefone : {{ fornecedor.telefone }} <br>
+                            Email &nbsp;&nbsp;&nbsp;&nbsp; : {{ fornecedor.email }} <br>
+                            CNPJ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{ fornecedor.cnpj }} <br>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="fal">
+                            Endereço: <br> {{ fornecedor.endereco|linebreaks }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-css">
+        
+        <br>
+        
+        <thead class="thead-inverse align-middle">
+            <tr>
+                <th width="10%">Registro de Entrada</th>
+                <th width="15%">Produtos</th>
+                <th width="15%">Quantidade</th>
+                <th width="15%">Preço total</th>
+                <th width="15%">Data</th>
+                <th width="30%">Opções</th>
+            </tr>
+        </thead>
+      
+        <tbody>
+            {% for entrada in registros %}
+            <tr>
+                <td class="align-middle"> <h3>{{ entrada.registro }}</h3> </td>
+                <td class="align-middle">{% for item in entrada.get_items_list %} {{ item.produto.nome }} <br> {% endfor %}</td>
+                <td class="align-middle">{% for item in entrada.get_items_list %} {{ item.quantidade }} <br> {% endfor %}</td>     
+                <td class="align-middle">{{ entrada.get_total_price }}</td>
+                <td class="align-middle">{{ entrada.diahora.date }}</td>
+                <td class="align-middle"> <a href="{% url 'registro-entrada' entrada.registro %}" class="btn ghost-pink" style= "display:none">View Bill</a> <a href="{% url 'deletar-entrada' entrada.pk %}" class="btn ghost-red">Deletar</a> </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+    <div class="align-middle">
+        {% if registros.has_other_pages %}
+
+            {% if registros.has_previous %}
+                <a class="btn btn-outline-info mb-4" href="?page=1">Primeira</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ registros.previous_page_number }}">Anterior</a>
+            {% endif %}
+
+            {% for num in registros.paginator.page_range %}
+                {% if registros.number == num %}
+                    <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% elif num > registros.number|add:'-3' and num < registros.number|add:'3' %}
+                    <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if registros.has_next %}
+                <a class="btn btn-outline-info mb-4" href="?page={{ registros.next_page_number }}">Proxima</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ registros.paginator.num_pages }}">Ultima</a>
+            {% endif %}
+
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock content %}

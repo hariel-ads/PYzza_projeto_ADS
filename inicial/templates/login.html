@@ -1,0 +1,84 @@
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">
+
+    <!-- Main CSS, then Sidebar CSS-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sidebar.css' %}">    
+    
+    <title>Pyzza - login</title>
+    
+    <style>
+        body
+        {            
+            background-image: url('{% static 'PYzza_background.png' %}') ; 
+            background-repeat:repeat;      
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<br><br><br>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-md-4">
+        {% if user.is_authenticated %}
+            
+            <br><br>
+            <h2 class="align-middle" style="color: #004f2d;">Você já está logado, {{ request.user.username }}!</h2>
+            <div class="border-top pt-3 align-middle"> <br>
+                <a class="btn ghost-pink" href="{% url 'home' %}">Voltar para Home</a> <br><br>
+                <a class="btn ghost-red" href="{% url 'logout' %}">Logout</a>
+            </div>
+        
+        {% else %}
+
+            <div class="content-section" style="border-color: #004f2d; border-radius: 0px; background-color: #fcefef;">
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <div class="align-middle" style="color: #004f2d; font-weight: 700; font-size: 3rem;">PYzza!</div>
+                        <div class="align-middle" style="color: #004f2d; font-size: 20px ;">Controle de estoque para pizzarias</div>
+                        <br><br>
+                        <div class="align-middle"><legend class="border-bottom mb-6;" style= "color: #004f2d">Login</legend></div>
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <div class="align-middle"> 
+                            <button class="ghost-green" type="submit">Login</button>         
+                            {# <button class="ml-2 ghost-red">Exit</button> #}
+                            <br><br>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="align-middle" style="display: none;"> <a href="{% url 'about' %}">About</a> </div>
+
+        {% endif %}
+
+    </div>
+</div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'bootstrap/jquery-3.3.1.slim.min.js' %}"></script>
+    <script src="{% static 'bootstrap/popper.min.js' %}"></script>
+    <script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>
