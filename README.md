@@ -26,10 +26,10 @@ Ao final do semestre foi possível entregar um sistema que cumpre as seguintes f
 <!--te-->
 
 <h3> Instruções para instalação: </h3>
-Instale as biliotecas listadas no requirements.txt
+---> Instale as biliotecas listadas no requirements.txt
 
 Em seguida será necessário criar as tabelas no banco de dados através dos comandos:
-```shell
+```
 python manage.py makemigrations
 python manage.py migrate
 ```
