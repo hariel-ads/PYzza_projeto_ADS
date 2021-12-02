@@ -37,8 +37,7 @@ Feito isso já é possível inicializar o sistema com o comando
 ```
 python manage.py runserver
 ```
-
+<div align= "center">
 <h3>Grupo:</h3>
-<div align: "center">
 ● Hariel Cardoso Lopes <br>● Lethícia Antunes Soares <br>● Luis Felipe Ortega Ventura <br>● Stalin Fernando Santos Oliveira Miranda <br>● Thiago dos Santos Soares <br>● Wellington Jorge Vieira
 </div>
