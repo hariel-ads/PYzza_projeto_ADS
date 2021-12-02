@@ -7,7 +7,9 @@ O projeto teve seu início com o levantamento e análise dos problemas mais comu
 
 Como resultado de toda esta análise, a escolha do grupo foi começar a desenvolver o sistema a partir do gerenciamento de estoque, ainda que outros problemas como delivery e controle do salão também fossem relevantes. Tendo como princípio as metodologias ágeis de desenvolvimento, o plano de ação foi implementar funcionalidades aos poucos para que fosse possível realizar entregas progressivas e constantes, de um sistema funcional. 
 
-Com o objetivo de colocar em prática alguns dos conhecimentos adquiridos durante o curso, optamos por fazer uso do framework Django que tem por base a linguagem de programação Python. 
+Com o objetivo de colocar em prática alguns dos conhecimentos adquiridos durante o curso, optamos por fazer uso do framework Django que tem por base a linguagem de programação Python. O sistema utiliza o banco de dados SQLite, que já vem integrado com Django. Pensando na interface com usuário, fizemos uso do boostrap com o objetivo de proporcionar uma aparência mais amigável. 
+
+A escolha das ferramentas citadas foi feita considerando também o curto prazo para o desenvolvimento, que aconteceu dentro de um período de 4 meses. 
 
 Ao final do semestre foi possível entregar um sistema que cumpre as seguintes funções:
 <!--ts-->
